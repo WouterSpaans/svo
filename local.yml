@@ -58,8 +58,14 @@
         - open-vm-tools-desktop
         - gnome-software
         - apt-transport-https
-        - dotnet-sdk-5.0
-        
+
+  - name: Install .NET Core SDK
+    apt:
+      name: dotnet-sdk-5.0
+      state: present
+      update_cache: yes
+    become: true
+
   - name: install psutil
     pip:
       name:
