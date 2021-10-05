@@ -105,10 +105,11 @@
 
 # https://docs.nativescript.org/environment-setup.html#linux-android
   - name: download nodejs 16
-    become: yes
+    become_user: wouter
     shell: curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 
   - name: install nodejs packages
+    become: yes
     package:
       name:
         - nodejs
