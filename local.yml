@@ -119,3 +119,8 @@
     package:
       name:
         - android-sdk
+        
+  - name: Download platform-tools-latest
+    get_url:
+      url: https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+      dest: /tmp/platform-tools-latest-linux.zip
