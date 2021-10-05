@@ -58,6 +58,7 @@
         - open-vm-tools-desktop
         - gnome-software
         - apt-transport-https
+        - openjdk-14-jdk
 
   - name: Install .NET Core SDK
     apt:
@@ -130,3 +131,6 @@
   - name: install nodejs
     become: yes
     shell: sudo apt-get install -y nodejs
+    
+    
+    openjdk-17-jdk
