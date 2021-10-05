@@ -1,0 +1,136 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: Add the user 'wouter' with a specific uid and a primary group of 'admin'
+    ansible.builtin.user:
+      name: wouter
+      shell: /bin/bash
+      comment: Wouter Spaans
+      uid: 1040
+      groups: 
+        - adm
+        - cdrom
+        - sudo
+        - dip
+        - plugdev
+        - lxd
+      password: $6$i2Tj/l3o5rH2XQDr$EXbxoUdukY4x8mjR2OUz4f53lU9EGk6xh9fvJomNZllsgIjJyrFkFoT2Lq2k3qsPiDea9jOZ7ZMDP1w3MjJ8p/
+
+  - name: Enable auto logon AutomaticLoginEnable
+    lineinfile:
+      path: /etc/gdm3/custom.conf
+      regexp: '^#  AutomaticLoginEnable = true'
+      line: '  AutomaticLoginEnable = true'
+      owner: root
+      group: root
+      mode: '0644'
+    
+  - name: Enable auto logon AutomaticLogin 
+    lineinfile:
+      path: /etc/gdm3/custom.conf
+      regexp: '^#  AutomaticLogin = user1'
+      line: '  AutomaticLogin = wouter'
+      owner: root
+      group: root
+      mode: '0644'
+
+  - name: Wait for unlocking /var/lib/dpkg/lock
+    become: yes
+    shell:  while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;  
+
+  - name: download ms product repository
+    get_url:
+      url: https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb
+      dest: /tmp/packages-microsoft-prod.deb
+
+  - name: install ms product repository
+    apt: deb=/tmp/packages-microsoft-prod.deb
+    become: true
+
+  - name: install apt packages
+    package:
+      name:
+        - python3-pip
+        - npm
+        - open-vm-tools-desktop
+        - gnome-software
+        - apt-transport-https
+        - dotnet-sdk-5.0
+        
+  - name: install psutil
+    pip:
+      name:
+        - psutil
+
+  - name: install brave
+    community.general.snap:
+      name:
+        - brave
+        
+  - name: install bitwarden
+    community.general.snap:
+      name:
+        - bitwarden
+
+  - name: install vscode
+    community.general.snap:
+      name: code
+      classic: yes
+      
+  - name: install vscode extention dotnettools
+    become_user: wouter
+    shell: code --install-extension ms-dotnettools.csharp
+
+  - name: copy wallpaper file
+    copy:
+      src: files/wallpaper_cavero1.png
+      dest: /usr/share/backgrounds/wallpaper_cavero1.png
+      owner: root
+      group: root
+
+  - name: set wallpaper
+    become_user: wouter
+    dconf:
+      key: "/org/gnome/desktop/background/picture-uri"
+      value: "'file:///usr/share/backgrounds/wallpaper_cavero1.png'"
+
+  - name: set wallpaper position
+    become_user: wouter
+    dconf:
+      key: "/org/gnome/desktop/background/picture-options"
+      value: "'zoom'"
+
+  - name: set favorites
+    become_user: wouter
+    dconf:
+      key: "/org/gnome/shell/favorite-apps"
+      value: "['org.gnome.Nautilus.desktop', 'snap-store_ubuntu-software.desktop', 'brave_brave.desktop', 'code_code.desktop', 'org.gnome.Terminal.desktop', 'bitwarden_bitwarden.desktop']"
+
+  - name: set desktop idle-delay
+    become_user: wouter
+    dconf:
+      key: "/org/gnome/desktop/session/idle-delay"
+      value: "uint32 0"
+
+  - name: add ansible user
+    user:
+      name: ansible
+      system: yes
+
+  - name: set up sudo for ansible user
+    copy:
+      src: files/sudoer_ansible
+      dest: /etc/sudoers.d/ansible
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: ansible
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/WouterSpaans/ansible.git
