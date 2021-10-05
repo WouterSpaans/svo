@@ -121,3 +121,12 @@
       user: ansible
       minute: "*/10"
       job: ansible-pull -o -U https://github.com/WouterSpaans/ansible.git
+
+# https://docs.nativescript.org/environment-setup.html#linux-android
+  - name: download nodejs 16
+    become: yes
+    shell: curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+
+  - name: install nodejs
+    become: yes
+    shell: sudo apt-get install -y nodejs
