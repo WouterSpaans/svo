@@ -58,7 +58,7 @@
         - open-vm-tools-desktop
         - gnome-software
         - apt-transport-https
-        - openjdk-14-jdk
+        - openjdk-17-jdk
 
   - name: Install .NET Core SDK
     apt:
