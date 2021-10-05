@@ -115,7 +115,6 @@
         - nodejs
 
   - name: install android sdk
-    become: yes
     package:
       name:
         - android-sdk
