@@ -104,22 +104,22 @@
       value: "uint32 0"
 
 # https://docs.nativescript.org/environment-setup.html#linux-android
-  - name: download nodejs 16
-    become_user: wouter
-    shell: curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+#  - name: download nodejs 16
+#    become_user: wouter
+#    shell: curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 
-  - name: install nodejs packages
-    become: yes
-    package:
-      name:
-        - nodejs
+#  - name: install nodejs packages
+#    become: yes
+#    package:
+#      name:
+#        - nodejs
 
-  - name: install android sdk
-    package:
-      name:
-        - android-sdk
-        
-  - name: Download platform-tools-latest
-    get_url:
-      url: https://dl.google.com/android/repository/platform-tools-latest-linux.zip
-      dest: /tmp/platform-tools-latest-linux.zip
+#  - name: install android sdk
+#    package:
+#      name:
+#        - android-sdk
+#        
+#  - name: Download platform-tools-latest
+#    get_url:
+#      url: https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+#      dest: /tmp/platform-tools-latest-linux.zip
