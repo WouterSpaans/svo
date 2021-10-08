@@ -91,6 +91,10 @@
     become_user: wouter
     shell: code --install-extension ms-dotnettools.csharp
 
+  - name: install vscode extention soltion explorer
+    become_user: wouter
+    shell: code --install-extension fernandoescolar.vscode-solution-explorer
+
   - name: set favorites
     become_user: wouter
     dconf:
