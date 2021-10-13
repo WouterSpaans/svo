@@ -123,6 +123,13 @@
       dest: /home/wouter/.bashrc
       owner: wouter
       group: wouter
+
+  - name: Creates directory
+    file:
+      path: /home/wouter/repos
+      owner: wouter
+      group: wouter
+      state: directory
       
 # https://docs.nativescript.org/environment-setup.html#linux-android
 #  - name: download nodejs 16
