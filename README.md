@@ -15,3 +15,6 @@ npm install
 
 cd ~/repos/SVO\ vakopleiding\ food/
 code .
+
+cd SVOFood.ProductRecognition.App/
+tns run
