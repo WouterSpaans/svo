@@ -129,7 +129,7 @@
       path: /home/wouter/repos
       owner: wouter
       group: wouter
-      mode: '1777'
+      mode: '0755'
       state: directory
   - name: Install "nativescript" node.js package globally.
     community.general.npm:
