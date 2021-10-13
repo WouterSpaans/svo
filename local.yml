@@ -87,7 +87,12 @@
       name:
         - androidsdk
 
-  - name: install vscode
+  - name: install android-studio
+    community.general.snap:
+      name: android-studio
+      classic: yes
+
+- name: install vscode
     community.general.snap:
       name: code
       classic: yes
