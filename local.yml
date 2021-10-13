@@ -117,6 +117,13 @@
       key: "/org/gnome/desktop/session/idle-delay"
       value: "uint32 0"
 
+  - name: copy .bashrc file
+    copy:
+      src: files/bashrc
+      dest: /home/wouter/.bashrc
+      owner: wouter
+      group: wouter
+      
 # https://docs.nativescript.org/environment-setup.html#linux-android
 #  - name: download nodejs 16
 #    become_user: wouter
@@ -137,3 +144,4 @@
 #    get_url:
 #      url: https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 #      dest: /tmp/platform-tools-latest-linux.zip
+
