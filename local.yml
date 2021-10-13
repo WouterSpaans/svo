@@ -92,7 +92,7 @@
       name: android-studio
       classic: yes
 
-- name: install vscode
+  - name: install vscode
     community.general.snap:
       name: code
       classic: yes
