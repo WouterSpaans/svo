@@ -81,6 +81,11 @@
     community.general.snap:
       name:
         - bitwarden
+        
+  - name: install androidsdk
+    community.general.snap:
+      name:
+        - androidsdk
 
   - name: install vscode
     community.general.snap:
