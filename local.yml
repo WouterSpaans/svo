@@ -130,6 +130,10 @@
       owner: wouter
       group: wouter
       state: directory
+  - name: Install "nativescript" node.js package globally.
+    community.general.npm:
+      name: nativescript
+      global: yes
       
 # https://docs.nativescript.org/environment-setup.html#linux-android
 #  - name: download nodejs 16
