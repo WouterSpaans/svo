@@ -149,6 +149,9 @@
     ansible.builtin.unarchive:
       src: https://dl.google.com/android/repository/build-tools_r31-linux.zip
       dest: /home/wouter/Android/Sdk/build-tools/31.0.0
+      owner: wouter
+      group: wouter
+      mode: '0755'
       remote_src: yes
 
   - name: Move build-tools/31.0.0
