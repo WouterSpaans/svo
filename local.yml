@@ -137,9 +137,9 @@
       name: nativescript
       global: yes
 
-  - name: Creates directory Android/Sdk/build-tools/31.0.0
+  - name: Creates directory Android/Sdk/build-tools/30.0.3
     file:
-      path: /home/wouter/Android/Sdk/build-tools/31.0.0
+      path: /home/wouter/Android/Sdk/build-tools/30.0.3
       owner: wouter
       group: wouter
       mode: '0755'
@@ -156,6 +156,14 @@
 
   - name: Cleanup build-tools/30.0.3
     shell: mv /home/wouter/Android/Sdk/build-tools/30.0.3/android-*/*  /home/wouter/Android/Sdk/build-tools/30.0.3/ && rm -rf /home/wouter/Android/Sdk/build-tools/30.0.3/android-*
+
+  - name: Creates directory Android/Sdk/build-tools/31.0.0
+    file:
+      path: /home/wouter/Android/Sdk/build-tools/31.0.0
+      owner: wouter
+      group: wouter
+      mode: '0755'
+      state: directory
 
   - name: Download build-tools/31.0.0
     ansible.builtin.unarchive:
