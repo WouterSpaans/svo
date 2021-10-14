@@ -117,4 +117,4 @@ if ! shopt -oq posix; then
 fi
 export ANDROID_HOME="/home/wouter/Android/Sdk/"
 export ANDROID_SDK_ROOT="/home/wouter/Android/Sdk/"
-export PATH="${PATH}:${ANDROID_SDK_ROOT}cmdline-tools/tools/:${ANDROID_SDK_ROOT}platform-tools/"
+export PATH="${PATH}:${ANDROID_SDK_ROOT}cmdline-tools/latest/:${ANDROID_SDK_ROOT}platform-tools/"
