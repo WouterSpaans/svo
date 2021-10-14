@@ -153,10 +153,13 @@
       group: wouter
       mode: '0755'
       remote_src: yes
+
+  - name: Cleanup commandlinetools-linux-7583922_latest.zip
+    shell: mv /home/wouter/Android/Sdk/cmdline-tools/latest/cmdline-tools/* /home/wouter/Android/Sdk/cmdline-tools/latest/ && rm -rf /home/wouter/Android/Sdk/cmdline-tools/latest/cmdline-tools
       
-  - name: Creates directory Android/Sdk/system-images/android-30/google_apis_playstore/x86
+  - name: Creates directory Android/Sdk/system-images/android-30/google_apis_playstore
     file:
-      path: /home/wouter/Android/Sdk/system-images/android-30/google_apis_playstore/x86
+      path: /home/wouter/Android/Sdk/system-images/android-30/google_apis_playstore
       owner: wouter
       group: wouter
       mode: '0755'
@@ -165,7 +168,7 @@
   - name: Download android-30/google_apis_playstore/x86
     ansible.builtin.unarchive:
       src: https://dl.google.com/android/repository/sys-img/google_apis_playstore/x86-30_r09-linux.zip
-      dest: /home/wouter/Android/Sdk/system-images/android-30/google_apis_playstore/x86
+      dest: /home/wouter/Android/Sdk/system-images/android-30/google_apis_playstore
       owner: wouter
       group: wouter
       mode: '0755'
