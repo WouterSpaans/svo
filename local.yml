@@ -131,10 +131,17 @@
       group: wouter
       mode: '0755'
       state: directory
+      
   - name: Install "nativescript" node.js package globally.
     community.general.npm:
       name: nativescript
       global: yes
+      
+  - name: Unarchive a file that needs to be downloaded (added in 2.0)
+    ansible.builtin.unarchive:
+      src: https://dl.google.com/android/repository/build-tools_r31-linux.zip
+      dest: /home/wouter/Android/Sdk/build-tools/31.0.0
+      remote_src: yes
       
 # https://docs.nativescript.org/environment-setup.html#linux-android
 #  - name: download nodejs 16
