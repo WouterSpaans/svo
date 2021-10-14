@@ -136,7 +136,15 @@
     community.general.npm:
       name: nativescript
       global: yes
-      
+
+  - name: Creates directory Android/Sdk/build-tools/31.0.0
+    file:
+      path: /home/wouter/Android/Sdk/build-tools/31.0.0
+      owner: wouter
+      group: wouter
+      mode: '0755'
+      state: directory
+
   - name: Unarchive a file that needs to be downloaded (added in 2.0)
     ansible.builtin.unarchive:
       src: https://dl.google.com/android/repository/build-tools_r31-linux.zip
