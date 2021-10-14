@@ -194,25 +194,25 @@
   - name: Cleanup build-tools/30.0.3
     shell: mv /home/wouter/Android/Sdk/build-tools/30.0.3/android-*/*  /home/wouter/Android/Sdk/build-tools/30.0.3/ && rm -rf /home/wouter/Android/Sdk/build-tools/30.0.3/android-*
 
-  - name: Creates directory Android/Sdk/build-tools/31.0.0
-    file:
-      path: /home/wouter/Android/Sdk/build-tools/31.0.0
-      owner: wouter
-      group: wouter
-      mode: '0755'
-      state: directory
+#  - name: Creates directory Android/Sdk/build-tools/31.0.0
+#    file:
+#      path: /home/wouter/Android/Sdk/build-tools/31.0.0
+#      owner: wouter
+#      group: wouter
+#      mode: '0755'
+#      state: directory
 
-  - name: Download build-tools/31.0.0
-    ansible.builtin.unarchive:
-      src: https://dl.google.com/android/repository/build-tools_r31-linux.zip
-      dest: /home/wouter/Android/Sdk/build-tools/31.0.0
-      owner: wouter
-      group: wouter
-      mode: '0755'
-      remote_src: yes
+#  - name: Download build-tools/31.0.0
+#    ansible.builtin.unarchive:
+#      src: https://dl.google.com/android/repository/build-tools_r31-linux.zip
+#      dest: /home/wouter/Android/Sdk/build-tools/31.0.0
+#      owner: wouter
+#      group: wouter
+#      mode: '0755'
+#      remote_src: yes
 
-  - name: Cleanup build-tools/31.0.0
-    shell: mv /home/wouter/Android/Sdk/build-tools/31.0.0/android-*/*  /home/wouter/Android/Sdk/build-tools/31.0.0/ && rm -rf /home/wouter/Android/Sdk/build-tools/31.0.0/android-*
+#  - name: Cleanup build-tools/31.0.0
+#    shell: mv /home/wouter/Android/Sdk/build-tools/31.0.0/android-*/*  /home/wouter/Android/Sdk/build-tools/31.0.0/ && rm -rf /home/wouter/Android/Sdk/build-tools/31.0.0/android-*
 
   #- name: Clean build-tools/31.0.0
   #  shell: rm -rf "/home/wouter/Android/Sdk/build-tools/31.0.0/android-12"
