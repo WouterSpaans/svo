@@ -155,10 +155,10 @@
       remote_src: yes
 
   - name: Move build-tools/31.0.0
-    command: mv /home/wouter/Android/Sdk/build-tools/31.0.0/android-*/*  /home/wouter/Android/Sdk/build-tools/31.0.0/
+    command: mv "/home/wouter/Android/Sdk/build-tools/31.0.0/android-12/"*  "/home/wouter/Android/Sdk/build-tools/31.0.0/"
 
   - name: Clean build-tools/31.0.0
-    command: rm -rf /home/wouter/Android/Sdk/build-tools/31.0.0/android-*
+    command: rm -rf "/home/wouter/Android/Sdk/build-tools/31.0.0/android-12"
 
 # https://docs.nativescript.org/environment-setup.html#linux-android
 #  - name: download nodejs 16
