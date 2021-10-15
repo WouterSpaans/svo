@@ -101,9 +101,13 @@
     become_user: wouter
     shell: code --install-extension ms-dotnettools.csharp
 
-  - name: install vscode extention soltion explorer
+  - name: install vscode extention solution explorer
     become_user: wouter
     shell: code --install-extension fernandoescolar.vscode-solution-explorer
+
+  - name: install vscode extention Vetur
+    become_user: wouter
+    shell: code --install-extension octref.vetur
 
   - name: set favorites
     become_user: wouter
